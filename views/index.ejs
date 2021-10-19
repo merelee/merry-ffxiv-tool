@@ -1,0 +1,48 @@
+<%- include('.././public/header.html') %>
+
+<% console.log(character.GearSet.Gear.Body) %>
+
+<h1>Character Sheet</h1>
+
+<div class="sheet">
+<div class="displayPortrait" style="background-image:url(<%= character.Portrait %>)"><%= character.Name %></div>
+
+<table>
+<tr><td class="header" colspan="2">Attributes</td></tr>
+<tr><td class="left">Strength</td><td class="right"><%= character.GearSet.Attributes[1] %></td></tr>
+<tr><td class="left">Dexterity</td><td class="right"><%= character.GearSet.Attributes[2] %></td></tr>
+<tr><td class="left">Vitality</td><td class="right"><%= character.GearSet.Attributes[3] %></td></tr>
+<tr><td class="left">Intelligence</td><td class="right"><%= character.GearSet.Attributes[4] %></td></tr>
+<tr><td class="left">Mind</td><td class="right"><%= character.GearSet.Attributes[5] %></td></tr>
+    
+<tr><td class="header" colspan="2">Offensive Properties</td></tr>
+<tr><td class="left">Critical Hit Rate</td><td class="right"><%= character.GearSet.Attributes[27] %></td></tr>
+<tr><td class="left">Determination</td><td class="right"><%= character.GearSet.Attributes[44] %></td></tr>
+<tr><td class="left">Direct Hit Rate</td><td class="right"><%= character.GearSet.Attributes[22] %></td></tr>
+
+<tr><td class="header" colspan="2">Defensive Properties</td></tr>
+<tr><td class="left">Defense</td><td class="right"><%= character.GearSet.Attributes[21] %></td></tr>
+<tr><td class="left">Magic Defense</td><td class="right"><%= character.GearSet.Attributes[24] %></td></tr>
+</table>
+    
+<table>
+<tr><td class="header" colspan="2">Physical Properties</td></tr>
+<tr><td class="left">Attack Power</td><td class="right"><%= character.GearSet.Attributes[20] %></td></tr>
+<tr><td class="left">Skill Speed</td><td class="right"><%= character.GearSet.Attributes[45] %></td></tr>
+    
+<tr><td class="header" colspan="2">Mental Properties</td></tr>
+<tr><td class="left">Attack Magic Potency</td><td class="right"><%= character.GearSet.Attributes[33] %></td></tr>
+<tr><td class="left">Healing Magic Potency</td><td class="right"><%= character.GearSet.Attributes[34] %></td></tr>
+<tr><td class="left">Spell Speed</td><td class="right"><%= character.GearSet.Attributes[46] %></td></tr>
+    
+<tr><td class="header" colspan="2">Role</td></tr>
+<tr><td class="left">Tenacity</td><td class="right"><%= character.GearSet.Attributes[19] %></td></tr>
+<tr><td class="left">Piety</td><td class="right"><%= character.GearSet.Attributes[6] %></td></tr>
+</table>
+
+<div class="clear"></div>
+</div>
+
+<h1>Gear Set</h1>
+
+<%- include('.././public/footer.html') %>
