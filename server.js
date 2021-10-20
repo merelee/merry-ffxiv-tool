@@ -7,17 +7,19 @@ const XIVAPI = require('@xivapi/js')
 const xiv = new XIVAPI()
 
 //pull data
+const { lodestoneId } = require('./config.json')
 const gear = require('./gear.js')
 
 app.set('view engine', 'ejs')
 
 //home page
 app.get('/', async (req, res) => {
-    const getCharacter = await xiv.character.get('2650420')
-    gear();
+    const getCharacter = await xiv.character.get(lodestoneId)
+    const getGear = await getCharacter.Character.GearSet.Gear
+    gear(getGear);
     
     res.render('index', {
-        character: getCharacter.Character,
+        character: getCharacter.Character
     })
 })
 
