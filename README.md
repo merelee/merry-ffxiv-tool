@@ -5,7 +5,7 @@ HEAVY WORK IN PROGRESS!!!!
 
 # How to Use
 
-## Installation
+### Installation
 You need Node.js to use this. https://nodejs.org/en/download/
 
 Clone using `git`
@@ -17,7 +17,7 @@ Then enter the directory and install the dependencies.
 `cd merry-ffxiv-tool`
 `npm install`
 
-## Configuration
+### Configuration
 
 Open config.json
 
@@ -37,10 +37,14 @@ https://na.finalfantasyxiv.com/lodestone/character/2650420/
 
 Then my lodestoneId will be 2650420.
 
-## Starting the server
+### Starting the server
 
 Start the server using `node` from the installation directory.
 
 `node server.js`
 
-Then navigate to http://localhost:3000/
+Then navigate to http://localhost:3000/ to access the tool.
+
+### My data isn't loading!
+
+Check that the lodestone is online, then try again.

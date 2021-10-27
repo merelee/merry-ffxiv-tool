@@ -1,0 +1,29 @@
+<%- include('.././public/header.html') %>
+
+<h1>Gear</h1>
+<div class="equipment">
+<table>
+<tr>
+    <td>Icon</td>
+    <td>Name</td>
+    <td>Crit</td>
+    <td>Det</td>
+    <td>D.Hit</td>
+    <td>Vitality</td>
+    
+</tr>
+<% gear.forEach(gear => { %>
+<tr>
+    <td class="gearIcon" style="background:url('<%= `https://xivapi.com` + gear.Icon %>')"></td>
+    <td><%= gear.Name %></td>
+    <% for (const [key, value] of Object.entries(gear.Stats)) { %>
+        <% if (key === 'CriticalHit') { %>
+            <td><%= value.NQ %></td>
+        <% } %>
+    <% } %>
+</tr>
+<% }) %>
+</table>
+</div>
+
+<%- include('.././public/footer.html') %>

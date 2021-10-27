@@ -5,21 +5,26 @@ const app = express();
 const ejs = require('ejs')
 const XIVAPI = require('@xivapi/js')
 const xiv = new XIVAPI()
+const fetch = require('node-fetch');
 
 //pull data
 const { lodestoneId } = require('./config.json')
-const gear = require('./gear.js')
+const fetchGear = require('./data/fetchGear.js')
 
 app.set('view engine', 'ejs')
 
-//home page
+//home page and character sheet
 app.get('/', async (req, res) => {
     const getCharacter = await xiv.character.get(lodestoneId)
-    const getGear = await getCharacter.Character.GearSet.Gear
-    gear(getGear);
-    
     res.render('index', {
         character: getCharacter.Character
+    })
+})
+
+//gear
+app.get('/gear', async (req, res) => {
+    res.render('gear', {
+        gear: fetchGear.gear
     })
 })
 
