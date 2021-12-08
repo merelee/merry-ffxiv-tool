@@ -14,8 +14,10 @@ Clone using `git`
 
 Then enter the directory and install the dependencies.
 
-```cd merry-ffxiv-tool```
-```npm install```
+```
+cd merry-ffxiv-tool
+npm install
+```
 
 ### Configuration
 
