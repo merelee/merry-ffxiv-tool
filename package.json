@@ -1,9 +1,10 @@
 {
   "name": "merry-ffxiv-tool",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "merelee",

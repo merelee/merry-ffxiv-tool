@@ -24,7 +24,8 @@ app.get('/', async (req, res) => {
 //gear
 app.get('/gear', async (req, res) => {
     res.render('gear', {
-        gear: fetchGear.gear
+        gear: fetchGear.gear,
+        slot: fetchGear.slot
     })
 })
 

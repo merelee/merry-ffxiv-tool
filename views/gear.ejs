@@ -12,16 +12,19 @@
     <td>Vitality</td>
     
 </tr>
-<% gear.forEach(gear => { %>
-<tr>
-    <td class="gearIcon" style="background:url('<%= `https://xivapi.com` + gear.Icon %>')"></td>
-    <td><%= gear.Name %></td>
-    <% for (const [key, value] of Object.entries(gear.Stats)) { %>
-        <% if (key === 'CriticalHit') { %>
-            <td><%= value.NQ %></td>
+<% slot.forEach(slot => { %>
+    <% gear.forEach(gear => { %>
+        <% if (gear.Slot === slot) { %>
+            <tr>
+            <td class="gearIcon" style="background:url('<%= `https://xivapi.com` + gear.Icon %>')"></td>
+            <td><%= gear.Name %></td>
+            <td><%= gear.Stats.CriticalHit.NQ %></td>
+            <td><%= gear.Stats.Determination.NQ %></td>
+            <td><%= gear.Stats.DirectHitRate.NQ %></td>
+            <td><%= gear.Stats.Vitality.NQ %></td>
+            </tr>
         <% } %>
-    <% } %>
-</tr>
+    <% }) %>
 <% }) %>
 </table>
 </div>

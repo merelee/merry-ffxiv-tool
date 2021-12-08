@@ -1,5 +1,5 @@
 # Merry FFXIV Tool
-A browser tool using XIVAPI to pull data about your character.
+A browser tool using XIVAPI to pull data about your character from the lodestone.
 
 HEAVY WORK IN PROGRESS!!!!
 
@@ -10,12 +10,12 @@ You need Node.js to use this. https://nodejs.org/en/download/
 
 Clone using `git`
 
-`git clone https://github.com/merelee/merry-ffxiv-tool`
+```git clone https://github.com/merelee/merry-ffxiv-tool```
 
 Then enter the directory and install the dependencies.
 
-`cd merry-ffxiv-tool`
-`npm install`
+```cd merry-ffxiv-tool```
+```npm install```
 
 ### Configuration
 
@@ -31,7 +31,7 @@ Replace the ID with your lodestone ID. You can find your ID by searching for you
 
 https://na.finalfantasyxiv.com/lodestone/character/
 
-Then, once at your character profile. Copy the numbers at the end of the URL. For example, if my URL were:
+Once at your character profile, copy the numbers at the end of the URL. For example, if my URL were:
 
 https://na.finalfantasyxiv.com/lodestone/character/2650420/
 
