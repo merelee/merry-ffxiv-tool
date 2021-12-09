@@ -1,31 +1,168 @@
 <%- include('.././public/header.html') %>
 
 <h1>Gear</h1>
-<div class="equipment">
-<table>
-<tr>
-    <td>Icon</td>
-    <td>Name</td>
-    <td>Crit</td>
-    <td>Det</td>
-    <td>D.Hit</td>
-    <td>Vitality</td>
-    
-</tr>
-<% slot.forEach(slot => { %>
-    <% gear.forEach(gear => { %>
-        <% if (gear.Slot === slot) { %>
-            <tr>
-            <td class="gearIcon" style="background:url('<%= `https://xivapi.com` + gear.Icon %>')"></td>
-            <td><%= gear.Name %></td>
-            <td><%= gear.Stats.CriticalHit.NQ %></td>
-            <td><%= gear.Stats.Determination.NQ %></td>
-            <td><%= gear.Stats.DirectHitRate.NQ %></td>
-            <td><%= gear.Stats.Vitality.NQ %></td>
-            </tr>
+<div class="equipment">    
+<table>   
+<!-- TANK AND SLAYING JOBS -->
+<% if (tank.some(job => job === activeJob) || slaying.some(job => job === activeJob)) { %>
+    <tr>    
+        <td>Icon</td>
+        <td>Name</td>
+        <td>STR</td>
+        <td>CRIT</td>
+        <td>DET</td>
+        <td>D.HIT</td>
+        <td>SKS</td>
+        <% if (tank.some(job => job === activeJob)) { %>
+        <td>TEN</td>
         <% } %>
+        <td>VIT</td>    
+    </tr>
+    <% slot.forEach(slot => { %>
+        <% gear.forEach(gear => { %>
+            <% if (gear.Slot === slot) { %>
+                <tr>
+                <td class="gearIcon" style="background:url('<%= `https://xivapi.com` + gear.Icon %>')"></td>
+                <td><%= gear.Name %></td>
+                <td><%= gear.Stats.Strength.NQ %></td>
+                <td><%= gear.Stats.CriticalHit.NQ %></td>
+                <td><%= gear.Stats.Determination.NQ %></td>
+                <td><%= gear.Stats.DirectHitRate.NQ %></td>
+                <td><%= gear.Stats.SkillSpeed.NQ %></td>
+                <% if (tank.some(job => job === activeJob)) { %>
+                <td><%= gear.Stats.Tenacity.NQ %></td>
+                <% } %>
+                <td><%= gear.Stats.Vitality.NQ %></td>
+                </tr>
+            <% } %>
+        <% }) %>
     <% }) %>
-<% }) %>
+<% } %>
+    
+<!-- HEALER AND CASTING JOBS -->
+<% if (healer.some(job => job === activeJob) || casting.some(job => job === activeJob)) { %>
+    <tr>    
+        <td>Icon</td>
+        <td>Name</td>
+        <% if (healer.some(job => job === activeJob)) { %>
+        <td>MND</td>
+        <% } %>
+        <% if (casting.some(job => job === activeJob)) { %>
+        <td>INT</td>
+        <% } %>
+        <td>CRIT</td>
+        <td>DET</td>
+        <td>D.HIT</td>
+        <td>SPS</td>
+        <% if (healer.some(job => job === activeJob)) { %>
+        <td>PIE</td>
+        <% } %>
+        <td>VIT</td>    
+    </tr>
+    <% slot.forEach(slot => { %>
+        <% gear.forEach(gear => { %>
+            <% if (gear.Slot === slot) { %>
+                <tr>
+                <td class="gearIcon" style="background:url('<%= `https://xivapi.com` + gear.Icon %>')"></td>
+                <td><%= gear.Name %></td>
+                <% if (healer.some(job => job === activeJob)) { %>
+                <td><%= gear.Stats.Mind.NQ %></td>
+                <% } %>
+                <% if (casting.some(job => job === activeJob)) { %>
+                <td><%= gear.Stats.Intelligence.NQ %></td>
+                <% } %>
+                <td><%= gear.Stats.CriticalHit.NQ %></td>
+                <td><%= gear.Stats.Determination.NQ %></td>
+                <td><%= gear.Stats.DirectHitRate.NQ %></td>
+                <td><%= gear.Stats.SpellSpeed.NQ %></td>
+                <% if (healer.some(job => job === activeJob)) { %>
+                <td><%= gear.Stats.Piety.NQ %></td>
+                <% } %>
+                <td><%= gear.Stats.Vitality.NQ %></td>
+                </tr>
+            <% } %>
+        <% }) %>
+    <% }) %>
+<% } %>
+
+<!-- AIMING JOBS -->
+<% if (aiming.some(job => job === activeJob)) { %>
+    <tr>    
+        <td>Icon</td>
+        <td>Name</td>
+        <td>DEX</td>
+        <td>CRIT</td>
+        <td>DET</td>
+        <td>D.HIT</td>
+        <td>SKS</td>
+        <td>VIT</td>    
+    </tr>
+    <% slot.forEach(slot => { %>
+        <% gear.forEach(gear => { %>
+            <% if (gear.Slot === slot) { %>
+                <tr>
+                <td class="gearIcon" style="background:url('<%= `https://xivapi.com` + gear.Icon %>')"></td>
+                <td><%= gear.Name %></td>
+                <td><%= gear.Stats.Dexterity.NQ %></td>
+                <td><%= gear.Stats.CriticalHit.NQ %></td>
+                <td><%= gear.Stats.Determination.NQ %></td>
+                <td><%= gear.Stats.DirectHitRate.NQ %></td>
+                <td><%= gear.Stats.SkillSpeed.NQ %></td>
+                <td><%= gear.Stats.Vitality.NQ %></td>
+                </tr>
+            <% } %>
+        <% }) %>
+    <% }) %>
+<% } %>
+    
+<!-- CRAFTING -->
+<% if (crafting.some(job => job === activeJob)) { %>
+    <tr>    
+        <td>Icon</td>
+        <td>Name</td>
+        <td>Craftsmanship</td>
+        <td>Control</td>
+        <td>CP</td>  
+    </tr>
+    <% slot.forEach(slot => { %>
+        <% gear.forEach(gear => { %>
+            <% if (gear.Slot === slot) { %>
+                <tr>
+                <td class="gearIcon" style="background:url('<%= `https://xivapi.com` + gear.Icon %>')"></td>
+                <td><%= gear.Name %></td>
+                <td><%= gear.Stats.Craftsmanship.NQ %></td>
+                <td><%= gear.Stats.Control.NQ %></td>
+                <td><%= gear.Stats.CP.NQ %></td>
+                </tr>
+            <% } %>
+        <% }) %>
+    <% }) %>
+<% } %>
+    
+<!-- GATHERING -->
+<% if (gathering.some(job => job === activeJob)) { %>
+    <tr>    
+        <td>Icon</td>
+        <td>Name</td>
+        <td>Gathering</td>
+        <td>Perception</td>
+        <td>GP</td>  
+    </tr>
+    <% slot.forEach(slot => { %>
+        <% gear.forEach(gear => { %>
+            <% if (gear.Slot === slot) { %>
+                <tr>
+                <td class="gearIcon" style="background:url('<%= `https://xivapi.com` + gear.Icon %>')"></td>
+                <td><%= gear.Name %></td>
+                <td><%= gear.Stats.Gathering.NQ %></td>
+                <td><%= gear.Stats.Perception.NQ %></td>
+                <td><%= gear.Stats.GP.NQ %></td>
+                </tr>
+            <% } %>
+        <% }) %>
+    <% }) %>
+<% } %>
+    
 </table>
 </div>
 

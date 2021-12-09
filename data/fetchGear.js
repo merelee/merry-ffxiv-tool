@@ -10,21 +10,18 @@ let gear = [];
 //The order to display gear in.
 let slot = ['MainHand', 'OffHand', 'Head', 'Body', 'Hands', 'Legs', 'Feet', 'Necklace', 'Bracelets', 'Ring1', 'Ring2'];
 
-//Base stats.
+//Base stat template to overwrite.
 let base = {
     Stats: {
-        CriticalHit: {
-            NQ: 0
-        },
-        Determination: {
-            NQ: 0
-        },
-        DirectHitRate: {
-            NQ: 0,
-        },
-        Vitality: { 
-            NQ: 0
-        }
+        //MAIN STAT
+        Vitality: {NQ: 0}, Strength: {NQ: 0}, Dexterity: {NQ: 0}, Intelligence: {NQ: 0}, Mind: {NQ: 0},
+        //SECONDARY
+        CriticalHit: {NQ: 0}, Determination: {NQ: 0}, DirectHitRate: {NQ: 0},
+        SkillSpeed: {NQ: 0}, SpellSpeed: {NQ: 0}, Tenacity: {NQ: 0}, Piety: {NQ: 0},
+        //CRAFTING
+        Craftsmanship: {NQ: 0}, Control: {NQ: 0}, CP: {NQ: 0},
+        //GATHERING
+        Gathering: {NQ: 0}, Perception: {NQ: 0}, GP: {NQ: 0}
     }
 };
 
@@ -58,15 +55,14 @@ for (const [key, value] of Object.entries(getGear)) {
     
 promise.then(function () {
     console.log('Finished grabbing gear.');
-    console.log('Getting stats...');
     gear.forEach(gear => {
         function merge(gear, base){
-            if (gear === base) {
+            if (gear === base || gear === null) {
                 return
             }
             Object.keys(base).forEach(function(key) {
                 var value = base[key];
-                if (value !== null & typeof value === 'object') {
+                if (value !== null && typeof value === 'object') {
                     if(!gear.hasOwnProperty(key)) {
                         gear[key] = {};
                     }
@@ -79,7 +75,6 @@ promise.then(function () {
         }
         merge(gear, base)
     })
-    console.log(gear)
 });
 }
 

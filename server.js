@@ -9,6 +9,7 @@ const fetch = require('node-fetch');
 
 //pull data
 const { lodestoneId } = require('./config.json')
+const jobs = require('./data/jobs.js')
 const fetchGear = require('./data/fetchGear.js')
 
 app.set('view engine', 'ejs')
@@ -23,7 +24,17 @@ app.get('/', async (req, res) => {
 
 //gear
 app.get('/gear', async (req, res) => {
+    const getCharacter = await xiv.character.get(lodestoneId)
+    const activeJob = await getCharacter.Character.ActiveClassJob.Name.split('/')[1].replace(/\s/g, '')
     res.render('gear', {
+        activeJob: activeJob,
+        tank: jobs.tank,
+        healer: jobs.healer,
+        slaying: jobs.slaying,
+        aiming: jobs.aiming,
+        casting: jobs.casting,
+        crafting: jobs.crafting,
+        gathering: jobs.gathering,
         gear: fetchGear.gear,
         slot: fetchGear.slot
     })
